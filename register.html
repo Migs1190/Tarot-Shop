@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nova+Square:regular"
+      rel="stylesheet"
+    />
+    <!-- Links -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/register.css" />
+
+    <!-- Meta -->
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Register</title>
+  </head>
+  <body>
+    <script defer src="js/register.js"></script>
+    <script defer src="js/parts.js"></script>
+    <script defer src="js/script.js"></script>
+
+    <header id="main-header"><!-- Data is filled with JS --></header>
+
+    <div class="alert nova">You must fill the whole form</div>
+    <section class="section-form nova">
+      <h2 class="capitalize">Sign-up</h2>
+      <form novalidate>
+        <input type="text" class="nova" placeholder="Username" id="username" />
+        <input type="email" class="nova" placeholder="E-mail" id="email" />
+        <input
+          type="password"
+          class="nova"
+          placeholder="Password"
+          id="password"
+        />
+        <input
+          type="password"
+          class="nova"
+          placeholder="Repeat Password"
+          id="password"
+        />
+        <br />
+        <input type="submit" class="nova" value="Sign Up" id="signup" />
+      </form>
+    </section>
+    <!-- ./section-form -->
+  </body>
+</html>
