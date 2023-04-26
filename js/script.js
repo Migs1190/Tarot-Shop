@@ -34,7 +34,7 @@ let products = [
   },
   {
     id: 3,
-    title: `TJustice - 11`,
+    title: `Justice - 11`,
     price: 69.99,
     location: `cards/justice.png`,
   },

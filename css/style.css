@@ -61,6 +61,7 @@ nav li a {
   margin: 0 5px;
   color: white;
 }
+nav li a
 /*---------------------------Login & Signup Form----------------------------*/
 .alert {
   color: red;
@@ -129,7 +130,7 @@ nav li a {
   width: 30%;
   margin: 1%;
   padding: 15px;
-  background-color: rgba(75, 75, 75, 0.358);
+  background-color: rgba(0, 0, 0, 0.125);
   cursor: pointer;
   line-height: 1.5;
 }
