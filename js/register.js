@@ -1,11 +1,11 @@
 `use strict`;
-let regUsername = document.querySelector(`#username`);
-let regEmail = document.querySelector(`#email`);
-let regPass = document.querySelector(`#password`);
-let signup_btn = document.querySelector(`#signup`);
-let fill_alert = document.querySelector(`.alert`);
+let regUsername = document.querySelector(`#reg-username`);
+let regEmail = document.querySelector(`#reg-email`);
+let regPass = document.querySelector(`#reg-password`);
+let signUpBtn = document.querySelector(`#signup`);
+let fillAlert = document.querySelector(`#fill-alert`);
 
-signup_btn.addEventListener(`click`, register);
+signUpBtn.addEventListener(`click`, register);
 
 function register(e) {
   e.preventDefault();
@@ -14,7 +14,7 @@ function register(e) {
     regEmail.value.trim() == `` ||
     regPass.value.trim() == ``
   )
-    fill_alert.style.opacity = `1`;
+    fillAlert.style.opacity = `1`;
   else {
     localStorage.setItem(`u_name`, `${regUsername.value}`);
     localStorage.setItem(`pass`, `${regPass.value}`);
@@ -24,4 +24,4 @@ function register(e) {
       window.location = `login.html`;
     }, 1000);
   }
-}
+};

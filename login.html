@@ -25,33 +25,44 @@
     <title>Login</title>
   </head>
   <body>
-    <script defer src="js/login.js"></script>
     <script defer src="js/parts.js"></script>
+    <script defer src="js/login.js"></script>
     <script defer src="js/script.js"></script>
 
     <header id="main-header"><!-- Data is filled with JS --></header>
 
-    <div class="rel">
-      <div class="alert nova abs">You must fill the whole form</div>
-      <div class="alert wrong-alert nova abs">
-        Either email or password are not correct
+    <div class="sizing-container">
+      <div class="alerts rel" id="log-alerts">
+        <!-- Data is filled with JS -->
       </div>
     </div>
 
-    <section class="section-form nova">
-      <h2 class="capitalize">Log-in</h2>
-      <form novalidate>
-        <input type="email" class="nova" placeholder="E-mail" id="email" />
-        <input
-          type="password"
-          class="nova"
-          placeholder="Password"
-          id="password"
-        />
-        <br />
-        <input type="submit" class="nova" value="Sign In" id="signin" />
-      </form>
+    <section class="login-form rel">
+      <div class="sizing-container">
+        <section class="form-content nova">
+          <h2 class="capitalize">Log-in</h2>
+          <form novalidate>
+            <input
+              type="email"
+              class="nova"
+              placeholder="E-mail"
+              id="log-email"
+            />
+            <input
+              type="password"
+              class="nova"
+              placeholder="Password"
+              id="log-password"
+            />
+            <br />
+            <input type="submit" class="nova" value="Sign In" id="signin" />
+          </form>
+          <div class="form-to">Don't have an account? <a href="register.html">Register</a></div>
+        </section>
+        <!-- ./form-content -->
+      </div>
+      <!-- ./sizing-container -->
     </section>
-    <!-- ./section-form -->
+    <!-- ./login-form -->
   </body>
 </html>

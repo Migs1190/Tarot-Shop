@@ -18,7 +18,6 @@
   width: 80%;
   margin: 0 auto;
 }
-
 /*---------------------------Header----------------------------*/
 header {
   background-color: #2a2a2a;
@@ -41,49 +40,118 @@ header {
   color: white;
 }
 nav {
-  height: 100%;
   position: relative;
+  height: 100%;
+  width: 400px;
 }
 #pre-sign {
   position: absolute;
 }
+#post-sign {
+  opacity: 0;
+  visibility: hidden;
+}
 nav ul {
   display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 nav ul li {
-  width: 100px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
-nav li a {
-  font-family: "nova square", sans-serif;
-  display: block;
-  padding: 21px 10px;
-  margin: 0 5px;
+nav ul li a {
   color: white;
+  padding: 20px;
+  transition: all 0.2s;
 }
-nav li a
-/*---------------------------Login & Signup Form----------------------------*/
-.alert {
-  color: red;
+nav ul li a:hover {
+  color: firebrick;
+}
+#logged-cart {
+  position: relative;
+  height: 100%;
+}
+#logged-cart .mini-cart {
+  position: absolute;
+  top: 100%;
+  width: 300px;
   text-align: center;
-  margin: 60px;
-  font-size: 40px;
+  background-color: white;
+  border: 2px solid black;
+  border-top: none;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: 0.2s;
+  z-index: 5;
+}
+
+#logged-cart .mini-cart-item {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+#logged-cart .mini-cart-item:hover {
+  background-color: whitesmoke;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+#badge {
+  background-color: firebrick;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+#logged-cart:hover .mini-cart {
+  transform: scale(1, 1);
+}
+/*---------------------------Login & Signup Form----------------------------*/
+.alerts {
+  height: 100px;
+}
+.alert {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
   opacity: 0;
   transition: all 0.4s;
 }
-.section-form {
+.login-form {
+  height: 250px;
+}
+.register-form {
+  height: 340px;
+}
+.form-content {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  width: 50%;
+  min-width: 30%;
   height: auto;
   padding: 20px;
   background-color: #232323;
   border-radius: 20px;
   text-align: center;
 }
-.section-form h2 {
+.form-content h2 {
   font-weight: bolder;
   color: white;
   font-size: 35px;
@@ -91,43 +159,56 @@ nav li a
   cursor: default;
 }
 
-.section-form input[type="text"],
-.section-form input[type="password"],
-.section-form input[type="email"] {
+.form-content input[type="text"],
+.form-content input[type="password"],
+.form-content input[type="email"] {
   position: relative;
-  display: inline-block;
-  width: 250px;
+  display: block;
+  width: 60%;
   height: 30px;
+  margin: auto;
   margin-bottom: 15px;
   padding-left: 25px;
   outline: none;
   border: 1px solid #b8b8b8b1;
   border-bottom: 2px solid blue;
 }
-.section-form input[type="submit"] {
+.form-content input[type="submit"] {
   width: 150px;
   height: 40px;
   font-size: 16px;
   font-weight: 600;
-  margin: 5px;
+  margin: 5px 0 10px;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
 }
-.section-form input:invalid {
+.form-to {
+  color: white;
+  text-align: left;
+}
+.form-to a {
+  margin: 0 10px;
+  color: rgb(89, 89, 255);
+}
+/*---------------------------Login & Signup Form Effects----------------------------*/
+.form-content input:invalid {
   border-bottom: 2px solid red;
 }
-.section-form input[type="submit"]:hover {
+.form-content input[type="submit"]:hover {
   transform: scale(1.1);
 }
 /*---------------------------Products----------------------------*/
 .product-content {
+  display: flex;
   margin: 60px 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .product-item {
   position: relative;
   display: inline-block;
-  width: 30%;
+  width: 23%;
   margin: 1%;
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.125);
@@ -138,6 +219,7 @@ nav li a
   margin-bottom: 5px;
   width: 100%;
   transition: all 0.2s;
+  z-index: 2;
 }
 .product-action {
   position: absolute;
@@ -150,15 +232,19 @@ nav li a
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
+  z-index: 4;
 }
 .product-action-icon {
-  padding: 20px;
+  padding: 5%;
   background-color: #2a2a2a;
   color: white;
+  font-size: x-large;
   transition: all 0.2s;
-  font-size: 20px;
+  /*Attributes for the button only*/
+  border: none;
+  cursor: pointer;
 }
-
+/*---------------------------Products Effects----------------------------*/
 .product-item::after {
   content: "";
   background-color: black;
@@ -169,7 +255,7 @@ nav li a
   left: 0;
   opacity: 0;
   transition: all 0.2s;
-  z-index: 1;
+  z-index: 3;
 }
 .product-item:hover::after {
   opacity: 0.4;
@@ -182,5 +268,5 @@ nav li a
   transform: scale(1.03);
 }
 .product-action-icon:hover {
-  padding: 25px;
+  padding: 7%;
 }

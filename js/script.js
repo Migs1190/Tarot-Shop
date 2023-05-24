@@ -1,23 +1,62 @@
+"use strict";
 let preNav = document.querySelector(`#pre-sign`);
 let postNav = document.querySelector(`#post-sign`);
 let navUsername = document.querySelector(`#nav-username`);
 let logout = document.querySelector(`#logout`);
+let loggedCart = document.querySelector(`#logged-cart`);
+let badge = document.querySelector(`#badge`);
+badge.innerHTML = 0;
+let productFrame = document.querySelector(`#product-frame`);
+let addToFav = document.querySelector(`#add-to-favorites`);
+let copyLink = document.querySelector(`#copy-link`);
+let miniCart = document.querySelector(`.mini-cart`);
 
 let key = localStorage.getItem(`u_name`);
 let url = window.location.href;
+let productsInCart = [];
 
 if (key && url.indexOf(`index.html`) != -1) {
   preNav.remove();
+  postNav.style.opacity = `1`;
+  postNav.style.visibility = `visible`;
   navUsername.innerHTML = key;
-  logout.innerHTML = `Logout`;
 }
 logout.addEventListener(`click`, () => {
   localStorage.clear();
+  window.location.reload();
 });
+//------------------------Functions--------------------------
+function arraySumer(array) {
+  let sum = 0;
+  array.forEach((e) => {
+    sum += e;
+  });
+  return sum;
+}
 
+function addedToCart(title, id) {
+  if (productsInCart.some((p) => p.id === id)) {
+    let index = productsInCart.findIndex((p) => p.id === id);
+    productsInCart[index].amount++;
+  } else {
+    productsInCart.push({ title: title, id: id, amount: 1 });
+  }
+  miniCart.innerHTML = ``;
+  productsInCart.forEach((e) => {
+    miniCart.innerHTML += `<div class="mini-cart-item">
+    ${e.title}
+    <span class="product-counter">
+    (${e.amount})
+    </span></div>`;
+    let sum = arraySumer(productsInCart.map((p) => p.amount));
+    if (sum > 1000) {
+      badge.innerHTML = parseFloat(sum / 1000) + `K`;
+    } else {
+      badge.innerHTML = sum;
+    }
+  });
+}
 //--------------------------------------------------
-
-let productFrame = document.querySelector(`#product-frame`);
 
 let products = [
   {
@@ -135,18 +174,25 @@ products.forEach((e) => {
             <h3 class="product-item-title">${e.title}</h3>
             <p class="product-item-price">${e.price}&dollar;</p>
             <div class="product-action">
-              <a href="" class="product-action-icon" id="add-to-cart"
-                ><i class="fa-solid fa-cart-plus"></i
-              ></a>
-              <a href="" class="product-action-icon" id="add-to-favorites"
-                ><i class="fa-solid fa-heart"></i
-              ></a>
-              <a href="" class="product-action-icon" id="copy-link"
-                ><i class="fa-solid fa-link"></i
-              ></a>
+              <button class="product-action-icon" id="add-to-cart" onclick="addedToCart('${e.title}', ${e.id})">
+              <i class="fa-solid fa-cart-plus fa-lg"></i>
+              </button>
+              <button class="product-action-icon" id="add-to-favorites" onclick="addedToFav(${e.id})">
+              <i class="fa-solid fa-heart fa-lg"></i>
+              </button>
+              <button class="product-action-icon" id="copy-link">
+              <i class="fa-solid fa-link fa-lg"></i>
+              </button>
             </div>
             <!-- ./product-actions -->
           </div>
           <!-- ./product-item - ${e.title} -->
         `;
+});
+//--------------------------------------------------
+let addToCart = document.querySelector(`#add-to-cart`);
+addToCart.addEventListener(`click`, () => {
+  if (!localStorage.getItem(`u_name`)) {
+    window.location = `login.html`;
+  }
 });
