@@ -33,7 +33,7 @@ if (header) {
 /*---------------------Login Alert-----------------------*/
 let alert1 = `
 <div class="alert nova abs" id="wrong-alert">
-Either email or password are not correct
+Either email or password are incorrect
 </div>
 <div class="alert nova abs" id="fill-alert">
 You must fill the whole form
