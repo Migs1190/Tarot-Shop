@@ -7,6 +7,7 @@ let signUpBtn = document.querySelector(`#signup`);
 let fillAlert = document.querySelector(`#fill-alert`);
 let passAlert = document.querySelector(`#pass-alert`);
 let emailAlert = document.querySelector(`#email-alert`);
+let alerts = document.querySelector(`.alert`);
 
 signUpBtn.addEventListener(`click`, register);
 
@@ -17,11 +18,19 @@ function register(e) {
     regEmail.value.trim() == `` ||
     regPass.value.trim() == ``
   ) {
+    emailAlert.style.opacity = `0`;
+    passAlert.style.opacity = `0`;
+
     fillAlert.style.opacity = `1`;
   } else if (regPassRep.value != regPass.value) {
+    fillAlert.style.opacity = `0`;
+    emailAlert.style.opacity = `0`;
+
     passAlert.style.opacity = `1`;
-  }
-  else if(!regEmail.checkValidity()){
+  } else if (!regEmail.checkValidity()) {
+    passAlert.style.opacity = `0`;
+    fillAlert.style.opacity = `0`;
+
     emailAlert.style.opacity = `1`;
   } else {
     localStorage.setItem(`u_name`, `${regUsername.value}`);
