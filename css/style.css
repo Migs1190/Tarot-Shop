@@ -59,6 +59,7 @@ nav ul {
   width: 100%;
 }
 nav ul li {
+  min-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,6 +80,8 @@ nav ul li a:hover {
 #logged-cart .mini-cart {
   position: absolute;
   top: 100%;
+  max-height: 500px;
+  overflow: auto;
   width: 300px;
   text-align: center;
   background-color: white;
@@ -200,15 +203,14 @@ nav ul li a:hover {
 }
 /*---------------------------Products----------------------------*/
 .product-content {
-  display: flex;
+    text-align: center;
   margin: 60px 0;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 100%;
 }
 .product-item {
   position: relative;
   display: inline-block;
-  width: 23%;
+  width: 22%;
   margin: 1%;
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.125);

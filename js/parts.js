@@ -48,6 +48,12 @@ let alert2 = `
 <div class="alert nova abs" id="fill-alert">
 You must fill the whole form
 </div>
+<div class="alert nova abs" id="pass-alert">
+Your passwords do not match
+</div>
+<div class="alert nova abs" id="email-alert">
+Please enter a valid email
+</div>
 `;
 let regAlerts = document.querySelector(`#reg-alerts`);
 if (regAlerts) {

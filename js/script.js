@@ -161,6 +161,36 @@ let products = [
     price: 69.99,
     location: `cards/thehermit.png`,
   },
+  {
+    id: 18,
+    title: `The World - 21`,
+    price: 69.99,
+    location: `cards/theworld.png`,
+  },
+  {
+    id: 19,
+    title: `The Empress - 3`,
+    price: 69.99,
+    location: `cards/theempress.png`,
+  },
+  {
+    id: 20,
+    title: `The Temperance - 14`,
+    price: 69.99,
+    location: `cards/temperance.png`,
+  },
+  {
+    id: 21,
+    title: `The Wheel - 10`,
+    price: 69.99,
+    location: `cards/thewheel.png`,
+  },
+  {
+    id: 22,
+    title: `The Lovers - 6`,
+    price: 69.99,
+    location: `cards/thelovers.png`,
+  },
 ];
 
 products.forEach((e) => {
