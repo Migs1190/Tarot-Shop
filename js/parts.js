@@ -54,6 +54,12 @@ Your passwords do not match
 <div class="alert nova abs" id="email-alert">
 Please enter a valid email
 </div>
+<div class="alert nova abs" id="email2-alert">
+This email is already registered
+</div>
+<div class="alert nova abs" id="uname-alert">
+This username is already taken
+</div>
 `;
 let regAlerts = document.querySelector(`#reg-alerts`);
 if (regAlerts) {

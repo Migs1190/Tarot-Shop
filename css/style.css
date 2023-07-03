@@ -19,9 +19,11 @@
   margin: 0 auto;
 }
 /*---------------------------Header----------------------------*/
+/* #region  */
 header {
   background-color: #2a2a2a;
   height: 60px;
+  margin-bottom: 5%;
 }
 .header-content {
   height: 60px;
@@ -59,15 +61,16 @@ nav ul {
   width: 100%;
 }
 nav ul li {
-  min-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  height: 100%;
+  width: auto;
+  margin: 0 5%;
 }
 nav ul li a {
   color: white;
-  padding: 20px;
+  padding: 15% 0;
   transition: all 0.2s;
 }
 nav ul li a:hover {
@@ -82,7 +85,7 @@ nav ul li a:hover {
   top: 100%;
   max-height: 500px;
   overflow: auto;
-  width: 300px;
+  width: 300%;
   text-align: center;
   background-color: white;
   border: 2px solid black;
@@ -98,7 +101,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 5%;
 }
 #logged-cart .mini-cart-item:hover {
   background-color: whitesmoke;
@@ -107,20 +110,20 @@ nav ul li a:hover {
   cursor: pointer;
 }
 #badge {
+  width: 37px;
+  padding: 2px 0;
   background-color: firebrick;
-  height: 30px;
-  min-width: 30px;
-  border-radius: 5px;
   color: white;
-  text-align: center;
-  line-height: 30px;
   font-weight: bold;
-  padding: 0 5px;
+  border-radius: 5px;
+  text-align: center;
 }
 #logged-cart:hover .mini-cart {
   transform: scale(1, 1);
 }
-/*---------------------------Login & Signup Form----------------------------*/
+/* #endregion */
+/*----------------------Login & Signup Form--------------------*/
+/* #region  */
 .alerts {
   height: 100px;
 }
@@ -194,34 +197,43 @@ nav ul li a:hover {
   margin: 0 10px;
   color: rgb(89, 89, 255);
 }
-/*---------------------------Login & Signup Form Effects----------------------------*/
+
+/*-----------------Login & Signup Form Effects-----------------*/
 .form-content input:invalid {
   border-bottom: 2px solid red;
 }
 .form-content input[type="submit"]:hover {
   transform: scale(1.1);
 }
-/*---------------------------Products----------------------------*/
+/* #endregion */
+/*----------------------Main Page Products---------------------*/
+/* #region  */
 .product-content {
-    text-align: center;
-  margin: 60px 0;
+  text-align: center;
   width: 100%;
 }
 .product-item {
   position: relative;
   display: inline-block;
   width: 22%;
+  height: 30%;
   margin: 1%;
-  padding: 15px;
+  padding: 2%;
   background-color: rgba(0, 0, 0, 0.125);
   cursor: pointer;
-  line-height: 1.5;
 }
 .product-item-img {
   margin-bottom: 5px;
   width: 100%;
   transition: all 0.2s;
   z-index: 2;
+}
+.product-item-title,
+.product-item-price {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 4% 0;
 }
 .product-action {
   position: absolute;
@@ -240,13 +252,14 @@ nav ul li a:hover {
   padding: 5%;
   background-color: #2a2a2a;
   color: white;
-  font-size: x-large;
   transition: all 0.2s;
   /*Attributes for the button only*/
   border: none;
   cursor: pointer;
 }
-/*---------------------------Products Effects----------------------------*/
+
+/*--------------------Main Page Products Effects--------------------*/
+
 .product-item::after {
   content: "";
   background-color: black;
@@ -272,3 +285,63 @@ nav ul li a:hover {
 .product-action-icon:hover {
   padding: 7%;
 }
+/* #endregion */
+/*------------------------Cart Page----------------------------*/
+/* #region  */
+.cart-frame {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 5%;
+  border: 2px solid;
+  position: relative;
+}
+.cart-item {
+  position: relative;
+  background-color: #00000020;
+  height: auto;
+  padding: 1%;
+  margin: 1% 0;
+}
+.cart-item img {
+  width: 10%;
+  vertical-align: middle;
+}
+.cart-item h4,
+.cart-item h5 {
+  position: absolute;
+  left: 14%;
+}
+.cart-item h4 {
+  top: 20%;
+}
+.cart-item h5 {
+  top: 40%;
+}
+.cart-item-actions {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 84px;
+}
+.cart-item-actions button {
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.378);
+  cursor: pointer;
+  line-height: 25px;
+  transform: translate(0, -100%);
+}
+.remove-from-cart {
+  left: 0%;
+}
+.save-for-later {
+  right: 0;
+}
+/*-----------------Cart Page Effects-----------------*/
+.cart-item:hover {
+  outline: 2px solid;
+}
+/* #endregion */

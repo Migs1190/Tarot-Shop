@@ -19,6 +19,7 @@ function login(e) {
     wrongAlert.style.opacity = `1`;
   } else {
     setTimeout((e) => {
+        localStorage.setItem(`logged`, `Yes`)
       window.location = `index.html`;
     }, 1000);
   }
