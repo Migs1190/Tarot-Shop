@@ -74,7 +74,7 @@ setInterval(() => {
     //If less than 1k write it normally
     else badge.innerHTML = sum;
   });
-}, 1000);
+}, 100);
 /* #endregion */
 //-------------------------Product Maker-------------------------
 
