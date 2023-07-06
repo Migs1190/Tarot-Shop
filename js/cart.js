@@ -8,10 +8,8 @@ function removeFromCart(id) {
   console.log(index);
   if (productsInCart[index].amount === 1) {
     productsInCart.splice(index, 1);
-    console.log(`removed`);
   } else {
     productsInCart[index].amount--;
-    console.log(`reduced`);
   }
   window.location.reload();
   if (productsInCart.length === 0) {

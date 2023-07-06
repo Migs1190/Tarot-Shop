@@ -270,7 +270,7 @@ nav ul li a:hover {
   left: 0;
   opacity: 0;
   transition: all 0.2s;
-  z-index: 3;
+  z-index: -1;
 }
 .product-item:hover::after {
   opacity: 0.4;
@@ -343,5 +343,27 @@ nav ul li a:hover {
 /*-----------------Cart Page Effects-----------------*/
 .cart-item:hover {
   outline: 2px solid;
+}
+/* #endregion */
+/*-------------------Product Details Page----------------------*/
+/* #region  */
+#product-details {
+  display: flex;
+}
+#product-details img {
+  width: 50%;
+  margin-right: 2%;
+  outline: 2px solid ;
+  padding: 1%;
+}
+.product-text * {
+  background-color: antiquewhite;
+  padding: 5px;
+}
+.product-text h2 {
+  font-size: 40px;
+}
+.product-text p {
+  margin: 2% 0;
 }
 /* #endregion */
