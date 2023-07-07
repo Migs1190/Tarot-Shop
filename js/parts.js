@@ -181,6 +181,7 @@ let headerContent = `
               <li><div id="badge"></div></li> 
           </nav>
         </div>
+        <input type="text" class="nova" id="search" placeholder="Search"/>
         <!-- ./header-content -->
       </div>
       <!-- ./sizing-container -->

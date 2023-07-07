@@ -55,6 +55,7 @@ function passedToDetails(title) {
   localStorage.setItem(`passedCard`, JSON.stringify(title));
   window.location = `productDetails.html`;
 }
+
 /* #endregion */
 //------------------------Loops--------------------------
 /* #region   */
@@ -84,9 +85,19 @@ if (localStorage.getItem(`productsInCart`)) {
 }
 /* #endregion */
 //-------------------------Product Maker-------------------------
+/* #region   */
+let searchBar = document.querySelector("#search");
 
-if (window.location.href.indexOf(`index.html`) != -1) {
-  products.forEach((e) => {
+productSpreader(products);
+searchBar.addEventListener(`input`, () => {
+  let x = searchBar.value.toLowerCase().trim();
+  let p = products.filter((e) => e.title.toLowerCase().search(x) !== -1);
+  productFrame.innerHTML = ``;
+  productSpreader(p);
+});
+
+function productSpreader(p) {
+  p.forEach((e) => {
     productFrame.innerHTML += `
         <div class="product-item nova">
             <img
@@ -114,4 +125,4 @@ if (window.location.href.indexOf(`index.html`) != -1) {
         `;
   });
 }
-//---------------------------Events-----------------------
+/* #endregion */

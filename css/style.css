@@ -1,3 +1,5 @@
+/*--------------------------General----------------------------*/
+/* #region  */
 * {
   text-decoration: none;
   list-style-type: none;
@@ -18,6 +20,7 @@
   width: 80%;
   margin: 0 auto;
 }
+/* #endregion */
 /*---------------------------Header----------------------------*/
 /* #region  */
 header {
@@ -103,12 +106,6 @@ nav ul li a:hover {
   align-items: center;
   padding: 0 5%;
 }
-#logged-cart .mini-cart-item:hover {
-  background-color: whitesmoke;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  cursor: pointer;
-}
 #badge {
   width: 37px;
   padding: 2px 0;
@@ -118,6 +115,25 @@ nav ul li a:hover {
   border-radius: 5px;
   text-align: center;
 }
+
+#search {
+  width: 100%;
+  margin: 1.5% 0;
+  padding: 1%;
+  font-size: 15px;
+  border: 2px solid black;
+}
+#search:focus {
+  outline: none;
+}
+
+#logged-cart .mini-cart-item:hover {
+  background-color: whitesmoke;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
 #logged-cart:hover .mini-cart {
   transform: scale(1, 1);
 }
@@ -352,8 +368,9 @@ nav ul li a:hover {
 }
 #product-details img {
   width: 50%;
+  height: 100%;
   margin-right: 2%;
-  outline: 2px solid ;
+  outline: 2px solid;
   padding: 1%;
 }
 .product-text * {
