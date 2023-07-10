@@ -20,6 +20,9 @@
   width: 80%;
   margin: 0 auto;
 }
+.firebrick {
+  color: firebrick;
+}
 /* #endregion */
 /*---------------------------Header----------------------------*/
 /* #region  */
@@ -118,10 +121,13 @@ nav ul li a:hover {
 
 #search {
   width: 100%;
-  margin: 1.5% 0;
+  margin-top: 1.5%;
   padding: 1%;
   font-size: 15px;
   border: 2px solid black;
+
+  opacity: 0;
+  visibility: hidden;
 }
 #search:focus {
   outline: none;
@@ -275,7 +281,6 @@ nav ul li a:hover {
 }
 
 /*--------------------Main Page Products Effects--------------------*/
-
 .product-item::after {
   content: "";
   background-color: black;
@@ -384,3 +389,24 @@ nav ul li a:hover {
   margin: 2% 0;
 }
 /* #endregion */
+/*---------------------Side Bar Favorites----------------------*/
+#side-bar {
+  height: 65%;
+  width: 7%;
+  background-color: gainsboro;
+  position: absolute;
+  top: 20%;
+  overflow-x: auto;
+  border: 3px solid;
+}
+
+.side-product-frame img {
+  width: 60%;
+  text-align: center;
+  display: block;
+  margin: 5% auto;
+  transition: all 0.5;
+}
+.side-product-frame img:hover{
+    transform: scale(1.05);
+}

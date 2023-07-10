@@ -3,11 +3,10 @@ let loggedCart = document.querySelector(`#logged-cart`);
 let badge = document.querySelector(`#badge`);
 badge.innerHTML = 0;
 let productFrame = document.querySelector(`#product-frame`);
-let addToFav = document.querySelector(`#add-to-favorites`);
 let copyLink = document.querySelector(`#copy-link`);
 let miniCart = document.querySelector(`.mini-cart`);
 
-//------------------------Functions--------------------------
+//------------------General Functions-------------------
 /* #region   */
 function arraySumer(array) {
   let sum = 0;
@@ -16,7 +15,21 @@ function arraySumer(array) {
   });
   return sum;
 }
-
+function checkFav() {
+  products.forEach((e) => {
+    let addToFav = document.querySelector(`#add-to-favorites_${e.id}`);
+    addToFav.innerHTML =
+      e.fav == true
+        ? `<i class="fa-solid fa-heart fa-lg" style="color: red"></i>`
+        : `<i class="fa-solid fa-heart fa-lg"></i>`;
+  });
+}
+function filterFav() {
+  return products.filter((e) => e.fav == true);
+}
+/* #endregion */
+//--------------------------Functions-------------------
+/* #region   */
 function addedToCart(title, id, price, location) {
   if (localStorage.getItem(`logged`) == `No`) {
     window.location = `login.html`;
@@ -44,11 +57,25 @@ function addedToCart(title, id, price, location) {
 }
 
 function addedToFav(id) {
-  alert(`Sorry, too lazy to make a favorites list`);
+  if (localStorage.getItem(`logged`) == `No`) {
+    window.location = `login.html`;
+    return;
+  }
+
+  let index = products.findIndex((p) => p == products.find((p) => p.id == id));
+  products[index].fav = products[index].fav == true ? false : true;
+  localStorage.setItem(`products`, JSON.stringify(products));
+
+  checkFav();
+  favSpreader();
+
+  localStorage.setItem(`productsInFav`, JSON.stringify(filterFav()));
+  console.log(filterFav());
+  if (filterFav() == ``) localStorage.removeItem(`productsInFav`);
 }
 
-function copiedToClip(location) {
-  navigator.clipboard.writeText(location);
+function copiedToClip(title) {
+  navigator.clipboard.writeText(title);
 }
 
 function passedToDetails(title) {
@@ -57,15 +84,15 @@ function passedToDetails(title) {
 }
 
 /* #endregion */
-//------------------------Loops--------------------------
+//-------------------------Loops------------------------
 /* #region   */
 //Refresh Selected products in localStorage
-if (localStorage.getItem(`productsInCart`)) {
-  setInterval(() => {
-    let productsInCart = JSON.parse(localStorage.getItem(`productsInCart`));
+setInterval(() => {
+  let productsInCart = JSON.parse(localStorage.getItem(`productsInCart`));
 
-    //Checking for products
-    if (productsInCart !== null) miniCart.innerHTML = ``;
+  //Checking for products
+  if (productsInCart !== null) {
+    miniCart.innerHTML = ``;
     //Add each product as an HTML div tag
     productsInCart.forEach((e) => {
       miniCart.innerHTML += `<div class="mini-cart-item">
@@ -81,10 +108,14 @@ if (localStorage.getItem(`productsInCart`)) {
       //If less than 1k write it normally
       else badge.innerHTML = sum;
     });
-  }, 100);
-}
+  } else {
+    miniCart.innerHTML = `No items selected`;
+    badge.innerHTML = 0;
+  }
+}, 1);
+
 /* #endregion */
-//-------------------------Product Maker-------------------------
+//------------------------Product Maker-----------------
 /* #region   */
 let searchBar = document.querySelector("#search");
 
@@ -109,13 +140,13 @@ function productSpreader(p) {
             <h4 class="product-item-title">${e.title}</h4>
             <h5 class="product-item-price">${e.price}&dollar;</h5>
             <div class="product-action">
-              <button class="product-action-icon" id="add-to-cart" onclick="addedToCart('${e.title}', '${e.id}', '${e.price}', '${e.location}')">
-              <i class="fa-solid fa-cart-plus fa-lg"></i>
+            <button class="product-action-icon" id="add-to-cart" onclick="addedToCart('${e.title}', '${e.id}', '${e.price}', '${e.location}')">
+            <i class="fa-solid fa-cart-plus fa-lg"></i>
               </button>
-              <button class="product-action-icon" id="add-to-favorites" onclick="addedToFav(${e.id})">
+              <button class="product-action-icon" id="add-to-favorites_${e.id}" onclick="addedToFav(${e.id})">
               <i class="fa-solid fa-heart fa-lg"></i>
               </button>
-              <button class="product-action-icon" id="copy-link" onclick="copiedToClip('${e.location}')">
+              <button class="product-action-icon" id="copy-link" onclick="copiedToClip('${e.title}')">
               <i class="fa-solid fa-link fa-lg"></i>
               </button>
             </div>
@@ -124,5 +155,26 @@ function productSpreader(p) {
           <!-- ./product-item - ${e.title} -->
         `;
   });
+  checkFav();
 }
+/* #endregion */
+//-----------------------Favorites Maker----------------
+/* #region   */
+let favoritesList = document.querySelector(`#side-bar`);
+
+function favSpreader() {
+  favoritesList.innerHTML = ``;
+
+  filterFav().forEach((e) => {
+    favoritesList.innerHTML += `
+      <div class="side-product-frame">
+          <img src="${e.location}"
+          alt="${e.title}"
+          class="side-bar-products"
+          onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${e.location}')"/>
+      </div>
+      `;
+  });
+}
+favSpreader();
 /* #endregion */

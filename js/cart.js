@@ -1,17 +1,21 @@
 let cartFrame = document.querySelector(`.cart-frame`);
+let productsInCart = JSON.parse(localStorage.getItem(`productsInCart`));
+
+cartSpreader();
 /*--------------------------Functions-------------------------*/
 /* #region   */
 function removeFromCart(id) {
-  let productsInCart = JSON.parse(localStorage.getItem(`productsInCart`));
   let index = productsInCart.findIndex((p) => p.id == id);
-  console.log(productsInCart);
-  console.log(index);
+
   if (productsInCart[index].amount === 1) {
     productsInCart.splice(index, 1);
   } else {
     productsInCart[index].amount--;
   }
-  window.location.reload();
+
+  cartFrame.innerHTML = ``;
+  cartSpreader(productsInCart);
+
   if (productsInCart.length === 0) {
     localStorage.removeItem(`productsInCart`);
   } else {
@@ -22,15 +26,16 @@ function removeFromCart(id) {
 function addedToArchive(id) {
   alert(`Sorry, too lazy to make a favorites list`);
 }
-/* #endregion */
 
-if (localStorage.getItem(`productsInCart`)) {
-  let productsInCart = JSON.parse(localStorage.getItem(`productsInCart`));
-  productsInCart.forEach((e) => {
-    cartFrame.innerHTML += `
-    <div class="cart-item">
+/* #endregion */
+function cartSpreader(p = productsInCart) {
+  if (localStorage.getItem(`productsInCart`)) {
+    p.forEach((e) => {
+      cartFrame.innerHTML += `
+    <div class="cart-item" 
+    onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${e.location}')">
             <img src="${e.location}" alt="${e.title}" draggable="false"/>
-            <h4>${e.title} x${e.amount}</h4>
+            <h4>${e.title} <span class="firebrick">x${e.amount}</span></h4>
             <h5>${e.price}&dollar;</h5>
             <div class="cart-item-actions">
               <button class="remove-from-cart" onclick="removeFromCart(${e.id})">
@@ -42,7 +47,8 @@ if (localStorage.getItem(`productsInCart`)) {
             </div>
           </div>
     `;
-  });
+    });
+  }
 }
 
 setInterval(() => {

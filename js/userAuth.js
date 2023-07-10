@@ -14,11 +14,11 @@ let navUsername = document.querySelector(`#nav-username`);
 let logout = document.querySelector(`#logout`);
 
 let logged = localStorage.getItem(`logged`);
-let url = window.location.href;
+let url = window.location.pathname;
 
 if (
   logged == `Yes` &&
-  (url.indexOf(`index.html`) != -1 || url.indexOf(`cart.html`) != -1)
+  (url == `/index.html` || url == `/cart.html` || url == `/` || url == `/productDetails.html`)
 ) {
   preNav.remove();
   postNav.style.opacity = `1`;
@@ -29,4 +29,4 @@ if (
 logout.addEventListener(`click`, () => {
   localStorage.setItem(`logged`, `No`);
   window.location.reload();
-});
+}); 
