@@ -16,10 +16,8 @@ let logout = document.querySelector(`#logout`);
 let logged = localStorage.getItem(`logged`);
 let url = window.location.pathname;
 
-if (
-  logged == `Yes` &&
-  (url == `/index.html` || url == `/cart.html` || url == `/` || url == `/productDetails.html`)
-) {
+if (logged == `No` && (url == `/register.html` || url == `/login.html`)) {
+} else {
   preNav.remove();
   postNav.style.opacity = `1`;
   postNav.style.visibility = `visible`;
@@ -29,4 +27,4 @@ if (
 logout.addEventListener(`click`, () => {
   localStorage.setItem(`logged`, `No`);
   window.location.reload();
-}); 
+});

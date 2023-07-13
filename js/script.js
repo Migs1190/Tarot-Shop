@@ -1,9 +1,7 @@
 "use strict";
-let loggedCart = document.querySelector(`#logged-cart`);
 let badge = document.querySelector(`#badge`);
 badge.innerHTML = 0;
 let productFrame = document.querySelector(`#product-frame`);
-let copyLink = document.querySelector(`#copy-link`);
 let miniCart = document.querySelector(`.mini-cart`);
 
 //------------------General Functions-------------------
@@ -82,7 +80,9 @@ function passedToDetails(title) {
   localStorage.setItem(`passedCard`, JSON.stringify(title));
   window.location = `productDetails.html`;
 }
-
+function passedToCreation(){
+    window.location = `productCreation.html`;
+}
 /* #endregion */
 //-------------------------Loops------------------------
 /* #region   */
@@ -128,8 +128,12 @@ searchBar.addEventListener(`input`, () => {
 });
 
 function productSpreader(p) {
-  p.forEach((e) => {
-    productFrame.innerHTML += `
+  if (
+    window.location.pathname == `/index.html` ||
+    window.location.pathname == `/`
+  ) {
+    p.forEach((e) => {
+      productFrame.innerHTML += `
         <div class="product-item nova">
             <img
               class="product-item-img"
@@ -154,8 +158,9 @@ function productSpreader(p) {
           </div>
           <!-- ./product-item - ${e.title} -->
         `;
-  });
-  checkFav();
+    });
+    checkFav();
+  }
 }
 /* #endregion */
 //-----------------------Favorites Maker----------------

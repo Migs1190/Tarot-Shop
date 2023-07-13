@@ -32,9 +32,11 @@ function cartSpreader(p = productsInCart) {
   if (localStorage.getItem(`productsInCart`)) {
     p.forEach((e) => {
       cartFrame.innerHTML += `
-    <div class="cart-item" 
-    onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${e.location}')">
-            <img src="${e.location}" alt="${e.title}" draggable="false"/>
+    <div class="cart-item">
+            <img src="${e.location}"
+            alt="${e.title}"
+            draggable="false"
+            onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${e.location}')"/>
             <h4>${e.title} <span class="firebrick">x${e.amount}</span></h4>
             <h5>${e.price}&dollar;</h5>
             <div class="cart-item-actions">

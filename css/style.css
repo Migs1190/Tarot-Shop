@@ -279,7 +279,22 @@ nav ul li a:hover {
   border: none;
   cursor: pointer;
 }
-
+.create-product {
+  width: 50px;
+  height: 50px;
+  background-color: gainsboro;
+  border: 2px solid;
+  border-radius: 25px;
+  position: fixed;
+  right: 5%;
+  top: 85%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.create-product i {
+  font-size: 17px;
+  transition: all 0.2s;
+}
 /*--------------------Main Page Products Effects--------------------*/
 .product-item::after {
   content: "";
@@ -306,6 +321,13 @@ nav ul li a:hover {
 .product-action-icon:hover {
   padding: 7%;
 }
+.create-product:hover {
+  background-color: whitesmoke;
+}
+.create-product:hover i {
+  color: firebrick;
+  font-size: 25px;
+}
 /* #endregion */
 /*------------------------Cart Page----------------------------*/
 /* #region  */
@@ -319,7 +341,7 @@ nav ul li a:hover {
 }
 .cart-item {
   position: relative;
-  background-color: #00000020;
+  background-color: gainsboro;
   height: auto;
   padding: 1%;
   margin: 1% 0;
@@ -327,6 +349,7 @@ nav ul li a:hover {
 .cart-item img {
   width: 10%;
   vertical-align: middle;
+  cursor: pointer;
 }
 .cart-item h4,
 .cart-item h5 {
@@ -390,11 +413,12 @@ nav ul li a:hover {
 }
 /* #endregion */
 /*---------------------Side Bar Favorites----------------------*/
+/* #region  */
 #side-bar {
   height: 65%;
   width: 7%;
   background-color: gainsboro;
-  position: absolute;
+  position: fixed;
   top: 20%;
   overflow-x: auto;
   border: 3px solid;
@@ -407,6 +431,48 @@ nav ul li a:hover {
   margin: 5% auto;
   transition: all 0.5;
 }
-.side-product-frame img:hover{
-    transform: scale(1.05);
+.side-product-frame img:hover {
+  transform: scale(1.05);
 }
+/* #endregion */
+/*-----------------------Product Creation----------------------*/
+/* #region  */
+#creation-form .image-uploader {
+  display: flex;
+  align-items: center;
+}
+#creation-form .image-preview {
+  width: 200px;
+  height: 100px;
+  background-color: gainsboro;
+}
+.image-preview img {
+  width: 100%;
+}
+#creation-form .created-image {
+}
+#creation-form .inp {
+  display: block;
+  width: 100%;
+  padding: 1%;
+  margin: 1% 0;
+  font-size: 16px;
+}
+#creation-form .created-submit {
+  width: 10%;
+  padding: 1%;
+  display: block;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  cursor: pointer;
+}
+/*------------------Product Creation Effects-------------------*/
+#creation-form .created-submit:hover {
+  background-color: gainsboro;
+  color: firebrick;
+}
+#creation-form .inp:focus {
+  outline: 2px solid firebrick;
+}
+/* #endregion */
