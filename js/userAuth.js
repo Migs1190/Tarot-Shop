@@ -15,7 +15,11 @@ let logout = document.querySelector(`#logout`);
 
 let logged = localStorage.getItem(`logged`);
 
-if (logged == `No` || url == `/register.html` || url == `/login.html`) {
+if (
+  logged == `No` ||
+  urlSearcher(`/register.html`) == true ||
+  urlSearcher(`/login.html`) == true
+) {
 } else {
   preNav.remove();
   postNav.style.opacity = `1`;

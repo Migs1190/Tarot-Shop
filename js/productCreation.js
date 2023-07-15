@@ -50,7 +50,6 @@ submitBtn.addEventListener(`click`, (event) => {
     });
 
     localStorage.setItem(`products`, JSON.stringify(products));
-    products = JSON.parse(localStorage.getItem(`products`));
     console.log(`done`);
   });
 });

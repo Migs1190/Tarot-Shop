@@ -25,6 +25,10 @@ function checkFav() {
 function filterFav() {
   return products.filter((e) => e.fav == true);
 }
+function urlSearcher(text) {
+  if (url.search(text) !== -1) return true;
+  return false;
+}
 /* #endregion */
 //--------------------------Functions-------------------
 /* #region   */
@@ -131,7 +135,7 @@ searchBar.addEventListener(`input`, () => {
 window.onload = productSpreader();
 
 function productSpreader(p = products) {
-  if (url == `/index.html` || url == `/`) {
+  if (urlSearcher(`/index.html`) == true || urlSearcher(`/`) == true) {
     p.forEach((e) => {
       productFrame.innerHTML += `
         <div class="product-item nova">
@@ -163,7 +167,7 @@ function productSpreader(p = products) {
   }
 }
 /* #endregion */
-//--------------------Favorites Spreader----------------
+//-----------------------Favorites Maker----------------
 /* #region   */
 let favoritesList = document.querySelector(`#side-bar`);
 
@@ -181,5 +185,5 @@ function favSpreader() {
       `;
   });
 }
-if (url == `/index.html`) favSpreader();
+if (urlSearcher(`/index.html`) == true) favSpreader();
 /* #endregion */
