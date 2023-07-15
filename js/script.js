@@ -115,19 +115,22 @@ setInterval(() => {
 }, 1);
 
 /* #endregion */
-//------------------------Product Maker-----------------
+//------------------------Search Bar--------------------
 /* #region   */
 let searchBar = document.querySelector("#search");
 
-productSpreader(products);
 searchBar.addEventListener(`input`, () => {
   let x = searchBar.value.toLowerCase().trim();
   let p = products.filter((e) => e.title.toLowerCase().search(x) !== -1);
   productFrame.innerHTML = ``;
   productSpreader(p);
 });
+/* #endregion */
+//---------------------Product Spreader-----------------
+/* #region   */
+window.onload = productSpreader();
 
-function productSpreader(p) {
+function productSpreader(p = products) {
   if (url == `/index.html` || url == `/`) {
     p.forEach((e) => {
       productFrame.innerHTML += `
@@ -160,7 +163,7 @@ function productSpreader(p) {
   }
 }
 /* #endregion */
-//-----------------------Favorites Maker----------------
+//--------------------Favorites Spreader----------------
 /* #region   */
 let favoritesList = document.querySelector(`#side-bar`);
 
