@@ -4,8 +4,30 @@ let createdDesc = document.querySelector(`.created-desc`);
 let createdPrice = document.querySelector(`.created-price`);
 let imagePreview = document.querySelector(`.image-preview`);
 let createdImage = document.querySelector(`.created-image`);
-let createdImageVal;
 let created_all = document.querySelectorAll(`.inp`);
+let createdImageVal;
+
+function readImage() {
+  return new Promise((resolve, reject) => {
+    if (createdImage.files[0].size > 409600) {
+      alert(`File too big`);
+      return;
+    }
+
+    let reader = new FileReader();
+    reader.readAsDataURL(createdImage.files[0]);
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = () => {
+      reject(new Error(`Error reading the image.`));
+    };
+  });
+}
+
+function inputError() {
+  alert(`Fill all spaces`);
+}
 
 submitBtn.addEventListener(`click`, (event) => {
   event.preventDefault();
@@ -17,32 +39,23 @@ submitBtn.addEventListener(`click`, (event) => {
       return;
     }
   }
-  products.push({
-    id: ++products[products.length - 1].id,
-    title: createdName.value,
-    price: createdPrice.value,
-    location: readImage(),
-    description: createdDesc.value,
-    fav: false,
+  readImage().then((e) => {
+    products.push({
+      id: products[products.length - 1].id + 1,
+      title: createdName.value,
+      price: createdPrice.value,
+      location: e,
+      description: createdDesc.value,
+      fav: false,
+    });
+
+    localStorage.setItem(`products`, JSON.stringify(products));
+    console.log(`done`);
   });
-  localStorage.setItem(`products`, JSON.stringify(products));
-  console.log(`done`);
 });
 
-function inputError() {
-  alert(`Fill all spaces`);
-}
-
-function readImage() {
-  let reader = new FileReader();
-  reader.readAsDataURL(createdImage.files[0]);
-
-  reader.onload = () => {
-    createdImageVal = reader.result;
-  };
-  return createdImageVal;
-}
-
 createdImage.addEventListener(`change`, () => {
-  imagePreview.innerHTML = `<img src="${readImage()}" draggable="false"/>`;
+  readImage().then((e) => {
+    imagePreview.innerHTML = `<img src="${e}" draggable="false"/>`;
+  });
 });

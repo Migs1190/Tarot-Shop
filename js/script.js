@@ -3,7 +3,7 @@ let badge = document.querySelector(`#badge`);
 badge.innerHTML = 0;
 let productFrame = document.querySelector(`#product-frame`);
 let miniCart = document.querySelector(`.mini-cart`);
-
+let url = window.location.pathname;
 //------------------General Functions-------------------
 /* #region   */
 function arraySumer(array) {
@@ -80,8 +80,8 @@ function passedToDetails(title) {
   localStorage.setItem(`passedCard`, JSON.stringify(title));
   window.location = `productDetails.html`;
 }
-function passedToCreation(){
-    window.location = `productCreation.html`;
+function passedToCreation() {
+  window.location = `productCreation.html`;
 }
 /* #endregion */
 //-------------------------Loops------------------------
@@ -128,10 +128,7 @@ searchBar.addEventListener(`input`, () => {
 });
 
 function productSpreader(p) {
-  if (
-    window.location.pathname == `/index.html` ||
-    window.location.pathname == `/`
-  ) {
+  if (url == `/index.html` || url == `/`) {
     p.forEach((e) => {
       productFrame.innerHTML += `
         <div class="product-item nova">
@@ -181,5 +178,5 @@ function favSpreader() {
       `;
   });
 }
-favSpreader();
+if (url == `/index.html`) favSpreader();
 /* #endregion */
