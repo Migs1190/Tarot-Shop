@@ -34,6 +34,9 @@
     <aside id="side-bar"><!-- Data is filled with JS --></aside>
 
     <section class="home-page">
+      <div id="product-filter">
+        <!-- Data is filled via JS -->
+      </div>
       <div class="sizing-container">
         <div class="product-content" id="product-frame">
           <!-- Data is filled via JS -->
@@ -41,9 +44,14 @@
         <!-- ./home-content -->
       </div>
       <!-- ./sizing-container -->
-      <button class="create-product" onclick="passedToCreation()"><i class="fa-solid fa-plus"></i></button>
+      <button
+        title="Create a new product"
+        class="create-product"
+        onclick="passedToCreation()"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
     </section>
     <!-- ./home-page -->
-    
   </body>
 </html>

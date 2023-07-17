@@ -1,6 +1,6 @@
 if (window.location.href.indexOf(`productDetails.html`) !== -1) {
   let productDetails = document.querySelector(`#product-details`);
-  let title = JSON.parse(localStorage.getItem(`passedCard`));
+  let title = localStorage.getItem(`passedCard`);
   let pageTitle = document.querySelector(`#PD`);
 
   let tempFiller = products.find((e) => e.title === title);

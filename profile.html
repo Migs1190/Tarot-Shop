@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nova+Square:regular"
+      rel="stylesheet"
+    />
+    <!-- Links -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Meta -->
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Home</title>
+  </head>
+  <body>
+    <script defer src="js/parts.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/profile.js"></script>
+    <script defer src="js/userAuth.js"></script>
+
+    <header id="main-header"><!-- Data is filled with JS --></header>
+
+    <aside id="side-bar"><!-- Data is filled with JS --></aside>
+
+    <section id="profile-details">
+      <div class="sizing-container">
+        <div class="profile-content">
+          <div class="avatar-frame">
+            <input type="file" class="avatar-getter" title="Change avatar" />
+            <div class="image-layer nova"></div>
+          </div>
+          <!-- ./avatar-frame -->
+          <div class="profile-credentials nova">
+            <h2 class="profile-username"></h2>
+            <button class="delete-account" title="Delete account">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+            <button class="edit-profile" title="Edit profile">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <details>
+              <summary>
+                <i class="fa-solid fa-caret-down"></i> Credentials
+              </summary>
+              <h4 class="profile-email"></h4>
+              <h4 class="profile-pass"></h4>
+              <label>
+                <input type="checkbox" class="show-pass" />
+                Show password
+              </label>
+              <h4 class="products-in-cart"></h4>
+            </details>
+          </div>
+          <!-- ./profile-credentials -->
+        </div>
+        <!-- ./profile-content -->
+      </div>
+      <!-- ./sizing-container -->
+    </section>
+  </body>
+</html>

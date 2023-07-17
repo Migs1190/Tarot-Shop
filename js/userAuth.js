@@ -17,6 +17,7 @@ let logged = localStorage.getItem(`logged`);
 
 if (
   logged == `No` ||
+  !logged ||
   urlSearcher(`/register.html`) == true ||
   urlSearcher(`/login.html`) == true
 ) {

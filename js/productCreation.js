@@ -47,10 +47,11 @@ submitBtn.addEventListener(`click`, (event) => {
       location: e,
       description: createdDesc.value,
       fav: false,
+      created: true,
     });
 
     localStorage.setItem(`products`, JSON.stringify(products));
-    console.log(`done`);
+    window.location = `index.html`;
   });
 });
 

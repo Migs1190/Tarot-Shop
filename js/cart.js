@@ -32,18 +32,26 @@ function cartSpreader(p = productsInCart) {
   if (localStorage.getItem(`productsInCart`)) {
     p.forEach((e) => {
       cartFrame.innerHTML += `
-    <div class="cart-item">
+    <div title="${e.title}" class="cart-item">
             <img src="${e.location}"
             alt="${e.title}"
             draggable="false"
-            onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${e.location}')"/>
-            <h4>${e.title} <span class="firebrick">x${e.amount}</span></h4>
-            <h5>${e.price}&dollar;</h5>
+            onclick="passedToDetails('${e.title}', '${e.id}', '${e.price}', '${
+        e.location
+      }')"/>
+            <div class="cart-item-text">
+                <h4>${e.title} <span class="firebrick">x${e.amount}</span></h4>
+                <h5>${e.price == 0 ? "free" : e.price + "&dollar;"}</h5>
+            </div>
             <div class="cart-item-actions">
-              <button class="remove-from-cart" onclick="removeFromCart(${e.id})">
+              <button title="Remove product from cart" class="remove-from-cart" onclick="removeFromCart(${
+                e.id
+              })">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
-              <button class="save-for-later" onclick="addedToArchive(${e.id})">
+              <button title="Save for later" class="save-for-later" onclick="addedToArchive(${
+                e.id
+              })">
                 <i class="fa-solid fa-box-archive"></i>
               </button>
             </div>
