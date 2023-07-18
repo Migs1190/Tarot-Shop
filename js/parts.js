@@ -182,6 +182,7 @@ if (!localStorage.getItem(`products`)) {
 }
 let products = JSON.parse(localStorage.getItem(`products`));
 /*---------------------Header-----------------------*/
+/* #region   */
 let headerContent = `
 <div class="sizing-container">
         <div class="header-content">
@@ -215,11 +216,16 @@ if (header) {
   header.innerHTML = headerContent;
 }
 
-if (window.location.href.indexOf(`index.html`) !== -1) {
+if (
+  window.location.pathname.search(`/index.html`) !== -1 ||
+  window.location.pathname == `/`
+) {
   document.querySelector(`#search`).style.opacity = `1`;
   document.querySelector(`#search`).style.visibility = `visible`;
 }
+/* #endregion */
 /*---------------------Sorting Button---------------------*/
+/* #region   */
 let sort = `<i class="fa-solid fa-sort"></i>
 <select title="Sort by" class="nova">
   <option value="default">Default</option>
@@ -228,7 +234,9 @@ let sort = `<i class="fa-solid fa-sort"></i>
 </select>`;
 let filterFrame = document.querySelector(`#product-filter`);
 if (filterFrame) filterFrame.innerHTML = sort;
+/* #endregion */
 /*---------------------Login Alert-----------------------*/
+/* #region   */
 let alert1 = `
 <div class="alert nova abs" id="wrong-alert">
 Either email or password are incorrect
@@ -241,7 +249,9 @@ let logAlerts = document.querySelector(`#log-alerts`);
 if (logAlerts) {
   logAlerts.innerHTML = alert1;
 }
+/* #endregion */
 /*---------------------Register Alert-----------------------*/
+/* #region   */
 let alert2 = `
 <div class="alert nova abs" id="fill-alert">
 You must fill the whole form
@@ -263,5 +273,5 @@ let regAlerts = document.querySelector(`#reg-alerts`);
 if (regAlerts) {
   regAlerts.innerHTML = alert2;
 }
-
-/*---------------------General Functions-----------------------*/
+/* #endregion */
+//-----------------------------------------------------------

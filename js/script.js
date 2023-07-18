@@ -8,7 +8,7 @@ let favoritesList = document.querySelector(`#side-bar`);
 let filter = document.querySelector(`#product-filter select`);
 
 window.onload = () => {
-  if (urlSearcher(`/index.html`)) {
+  if (urlSearcher(`/index.html`) || url == `/`) {
     filter.selectedIndex = 0;
     productSpreader();
   }
@@ -242,7 +242,7 @@ favSpreader();
 /* #endregion */
 //-----------------------Filter-------------------------
 /* #region   */
-if (urlSearcher(`/index.html`)) {
+if (urlSearcher(`/index.html`) || urlSearcher(`/`)) {
   filter.addEventListener(`change`, (e) => {
     let temp = e.target.value;
     products = storageGetter(`products`);
