@@ -8,7 +8,7 @@ let favoritesList = document.querySelector(`#side-bar`);
 let filter = document.querySelector(`#product-filter select`);
 
 window.onload = () => {
-  if (urlSearcher(`/index.html`) || url == `/`) {
+  if (urlSearcher(`/index.html`) || url == `/` || url == `/Tarot-Shop/`) {
     filter.selectedIndex = 0;
     productSpreader();
   }

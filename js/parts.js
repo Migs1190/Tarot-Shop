@@ -218,7 +218,8 @@ if (header) {
 
 if (
   window.location.pathname.search(`/index.html`) !== -1 ||
-  window.location.pathname == `/`
+  window.location.pathname == `` ||
+  window.location.pathname == `/Tarot-Shop/`
 ) {
   document.querySelector(`#search`).style.opacity = `1`;
   document.querySelector(`#search`).style.visibility = `visible`;
