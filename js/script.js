@@ -8,7 +8,7 @@ let favoritesList = document.querySelector(`#side-bar`);
 let filter = document.querySelector(`#product-filter select`);
 
 window.onload = () => {
-  if (urlSearcher(`/index.html`) || url == `/` || url == `/Tarot-Shop/`) {
+  if (urlSearcher(`/index.html`) || url == `/` || urlSearcher(`/Tarot-Shop`)) {
     filter.selectedIndex = 0;
     productSpreader();
   }
@@ -171,7 +171,7 @@ searchBar.addEventListener(`input`, () => {
 //---------------------Product Spreader-----------------
 /* #region   */
 function productSpreader(p = products) {
-  if (urlSearcher(`/index.html`) || urlSearcher(`/`)) {
+  if (urlSearcher(`/index.html`) || url == `/` || urlSearcher(`/Tarot-Shop`)) {
     p.forEach((e) => {
       productFrame.innerHTML += `
         <div class="product-item nova">
